@@ -1,0 +1,12 @@
+models:
+  Book:
+    title: string
+    slug: string unique
+    content: longtext
+    category_id: id
+    user_id: id
+  Category:
+    name: string
+    slug: string unique
+    relationships:
+      hasMany: Book

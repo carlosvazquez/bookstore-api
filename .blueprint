@@ -1,0 +1,22 @@
+created:
+    - database/migrations/2020_05_13_183142_create_books_table.php
+    - database/migrations/2020_05_13_183143_create_categories_table.php
+    - app/Models/Book.php
+    - app/Models/Category.php
+    - database/factories/BookFactory.php
+    - database/factories/CategoryFactory.php
+models:
+    Book:
+        {
+            title: string,
+            slug: "string unique",
+            content: longtext,
+            category_id: id,
+            user_id: id,
+        }
+    Category:
+        {
+            name: string,
+            slug: "string unique",
+            relationships: { hasMany: Book },
+        }
