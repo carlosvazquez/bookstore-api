@@ -52,8 +52,8 @@ class GenerateTestingData extends Command
         Category::query()->delete();
 
         $user = User::factory()->hasBooks(1)->create([
-            'name' => 'Jorge',
-            'email' => 'jorge@aprendible.com'
+            'name' => 'John',
+            'email' => 'john@mail.com'
         ]);
 
         $books = Book::factory()->count(14)->create();
@@ -62,7 +62,7 @@ class GenerateTestingData extends Command
         $this->line($user->id);
 
         $this->info('Token:');
-        $this->line($user->createToken('Jorge')->plainTextToken);
+        $this->line($user->createToken('John')->plainTextToken);
 
         $this->info('Book ID:');
         $this->line($user->books->first()->slug);

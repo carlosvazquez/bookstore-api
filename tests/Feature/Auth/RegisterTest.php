@@ -13,12 +13,12 @@ class RegisterTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function can_register()
+    public function can_register()
     {
         $response = $this->postJson(route('api.v1.register'), [
-            'name' => 'Jorge García',
-            'email' => 'jorge@aprendible.com',
-            'device_name' => 'Dispositivo de Jorge',
+            'name' => 'John Doe',
+            'email' => 'john@mail.com',
+            'device_name' => 'Dispositivo de John',
             'password' => 'password',
             'password_confirmation' => 'password'
         ]);
@@ -31,13 +31,13 @@ class RegisterTest extends TestCase
         );
 
         $this->assertDatabaseHas('users', [
-            'name' => 'Jorge García',
-            'email' => 'jorge@aprendible.com',
+            'name' => 'John Doe',
+            'email' => 'john@mail.com',
         ]);
     }
 
     /** @test */
-    function cannot_register_twice()
+    public function cannot_register_twice()
     {
         Sanctum::actingAs(User::factory()->create());
 
@@ -46,41 +46,41 @@ class RegisterTest extends TestCase
     }
 
     /** @test */
-    function name_is_required()
+    public function name_is_required()
     {
         $this->postJson(route('api.v1.register'), [
             'name' => '',
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('name');
     }
 
     /** @test */
-    function email_is_required()
+    public function email_is_required()
     {
         $this->postJson(route('api.v1.register'), [
             'email' => '',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('email');
     }
 
     /** @test */
-    function email_must_be_valid()
+    public function email_must_be_valid()
     {
         $this->postJson(route('api.v1.register'), [
             'email' => 'invalid-email',
             'password' => 'password',
             'password_confirmation' => 'password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('email');
     }
 
     /** @test */
-    function email_must_be_unique()
+    public function email_must_be_unique()
     {
         $user = User::factory()->create();
 
@@ -88,39 +88,38 @@ class RegisterTest extends TestCase
             'email' => $user->email,
             'password' => 'password',
             'password_confirmation' => 'password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('email');
     }
 
     /** @test */
-    function password_is_required()
+    public function password_is_required()
     {
         $this->postJson(route('api.v1.register'), [
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => '',
             'password_confirmation' => 'password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('password');
     }
 
     /** @test */
-    function password_must_be_confirmed()
+    public function password_must_be_confirmed()
     {
         $this->postJson(route('api.v1.register'), [
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => 'password',
             'password_confirmation' => 'not-confirmed',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('password');
     }
     /** @test */
-    function device_name_is_required()
+    public function device_name_is_required()
     {
         $this->postJson(route('api.v1.register'), [
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => 'password',
             'device_name' => ''
         ])->assertJsonValidationErrors('device_name');
     }
-
 }

@@ -115,12 +115,12 @@ class FilterBooksTest extends TestCase
     public function can_search_books_by_title_and_content()
     {
         Book::factory()->create([
-            'title' => 'Book from Aprendible',
+            'title' => 'Book from Bookstore',
             'content' => 'Content'
         ]);
         Book::factory()->create([
             'title' => 'Another Book',
-            'content' => 'Content Aprendible...'
+            'content' => 'Content Bookstore...'
         ]);
 
         Book::factory()->create([
@@ -128,11 +128,11 @@ class FilterBooksTest extends TestCase
             'content' => 'content 2'
         ]);
 
-        $url = route('api.v1.books.index', ['filter[search]' => 'Aprendible']);
+        $url = route('api.v1.books.index', ['filter[search]' => 'Bookstore']);
 
         $this->jsonApi()->get($url)
             ->assertJsonCount(2, 'data')
-            ->assertSee('Book from Aprendible')
+            ->assertSee('Book from Bookstore')
             ->assertSee('Another Book')
             ->assertDontSee('Title 2')
         ;
@@ -142,13 +142,13 @@ class FilterBooksTest extends TestCase
     public function can_search_books_by_title_and_content_with_multiple_terms()
     {
         Book::factory()->create([
-            'title' => 'Book from Aprendible',
+            'title' => 'Book from Bookstore',
             'content' => 'Content'
         ]);
 
         Book::factory()->create([
             'title' => 'Another Book',
-            'content' => 'Content Aprendible...'
+            'content' => 'Content Bookstore...'
         ]);
 
         Book::factory()->create([
@@ -161,11 +161,11 @@ class FilterBooksTest extends TestCase
             'content' => 'content 2'
         ]);
 
-        $url = route('api.v1.books.index', ['filter[search]' => 'Aprendible Laravel']);
+        $url = route('api.v1.books.index', ['filter[search]' => 'Bookstore Laravel']);
 
         $this->jsonApi()->get($url)
             ->assertJsonCount(3, 'data')
-            ->assertSee('Book from Aprendible')
+            ->assertSee('Book from Bookstore')
             ->assertSee('Another Book')
             ->assertSee('Another Laravel Book')
             ->assertDontSee('Title 2')

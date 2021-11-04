@@ -66,9 +66,9 @@ class LoginTest extends TestCase
     public function cannot_login_with_invalid_credentials()
     {
         $this->postJson(route('api.v1.login'), [
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => 'wrong-password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('email');
     }
 
@@ -91,7 +91,7 @@ class LoginTest extends TestCase
         $this->postJson(route('api.v1.login'), [
             'email' => '',
             'password' => 'wrong-password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertSee(__('validation.required', ['attribute' => 'email']))
             ->assertJsonValidationErrors('email');
     }
@@ -102,7 +102,7 @@ class LoginTest extends TestCase
         $this->postJson(route('api.v1.login'), [
             'email' => 'invalid-email',
             'password' => 'wrong-password',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertSee(__('validation.email', ['attribute' => 'email']))
             ->assertJsonValidationErrors('email');
     }
@@ -111,9 +111,9 @@ class LoginTest extends TestCase
     public function password_is_required()
     {
         $this->postJson(route('api.v1.login'), [
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => '',
-            'device_name' => 'iPhone de Jorge'
+            'device_name' => 'iPhone de John'
         ])->assertJsonValidationErrors('password');
     }
 
@@ -121,7 +121,7 @@ class LoginTest extends TestCase
     public function device_name_is_required()
     {
         $this->postJson(route('api.v1.login'), [
-            'email' => 'jorge@aprendible.com',
+            'email' => 'john@mail.com',
             'password' => 'password',
             'device_name' => ''
         ])->assertJsonValidationErrors('device_name');
