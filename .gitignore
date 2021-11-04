@@ -1,0 +1,34 @@
+# laravel
+/node_modules
+/public/hot
+/public/storage
+/storage/debugbar/*
+/storage/*.key
+/vendor
+Homestead.json
+Homestead.yaml
+# configuration
+.env
+.env.backup
+
+# assets development
+/resources/assets/bower_components
+npm-debug.log
+yarn-error.log
+
+# os
+.DS_Store
+Thumbs.db
+.idea/
+.tags
+
+# Packages
+/nbproject/
+/.vscode
+_ide_helpers.php
+.vagrant/
+.phpunit.result.cache
+docker-compose.override.yml
+
+# Vim
+.session.vim
