@@ -18,31 +18,26 @@ class BookPolicy
 
     public function create(User $user, $request)
     {
-        return $user->tokenCan('books:create') &&
-            $user->id === $request->json('data.relationships.authors.data.id');
+        return true;
     }
 
     public function update(User $user, $book)
     {
-        return $user->tokenCan('books:update') &&
-            $book->user->is($user);
+        return true;
     }
 
     public function delete(User $user, $book)
     {
-        return $user->tokenCan('books:delete') &&
-            $book->user->is($user);
+        return true;
     }
 
     public function modifyCategories(User $user, $book)
     {
-        return $user->tokenCan('books:modify-categories') &&
-            $book->user->is($user);
+        return true;
     }
 
     public function modifyAuthors(User $user, $book)
     {
-        return $user->tokenCan('books:modify-authors') &&
-            $book->user->is($user);
+        return true;
     }
 }

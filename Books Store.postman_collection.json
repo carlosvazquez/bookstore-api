@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1ef07fac-efed-40aa-b547-5e3dc36df5bb",
+		"_postman_id": "a30a1ce8-ba01-48f2-b58b-f057d3d6681c",
 		"name": "Books Store",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -252,7 +252,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"John\",\n    \"email\": \"user@mail.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"device_name\": \"John's phone\"\n}"
+							"raw": "{\n    \"name\": \"User\",\n    \"email\": \"user@mail.com\",\n    \"password\": \"password\",\n    \"password_confirmation\": \"password\",\n    \"device_name\": \"User's phone\"\n}"
 						},
 						"url": {
 							"raw": "{{API_URL}}/register",
@@ -491,6 +491,113 @@
 			"name": "Books",
 			"item": [
 				{
+					"name": "Books",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/books",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Books Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_URL}}/books",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.22"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Nov 2021 18:42:47 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"type\": \"books\",\n            \"id\": \"venganza-nuestra\",\n            \"attributes\": {\n                \"title\": \"Vengaza Nuestra\",\n                \"slug\": \"venganza-nuestra\",\n                \"content\": \"Narrativa sobre la postconquista de México\",\n                \"created-at\": \"2021-11-06T18:41:14+00:00\",\n                \"updated-at\": \"2021-11-06T18:41:14+00:00\"\n            },\n            \"relationships\": {\n                \"authors\": {\n                    \"links\": {\n                        \"self\": \"https://bookstore.test/api/v1/books/venganza-nuestra/relationships/authors\",\n                        \"related\": \"https://bookstore.test/api/v1/books/venganza-nuestra/authors\"\n                    }\n                },\n                \"categories\": {\n                    \"links\": {\n                        \"self\": \"https://bookstore.test/api/v1/books/venganza-nuestra/relationships/categories\",\n                        \"related\": \"https://bookstore.test/api/v1/books/venganza-nuestra/categories\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://bookstore.test/api/v1/books/venganza-nuestra\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
 					"name": "Paginated Books",
 					"request": {
 						"method": "GET",
@@ -646,7 +753,7 @@
 					},
 					"response": [
 						{
-							"name": "Single Book",
+							"name": "Success Single Book Response",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -724,7 +831,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{ACCESS_TOKEN}}",
+									"value": "{{API_TOKEN}}",
 									"type": "string"
 								},
 								{
@@ -755,7 +862,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"type\": \"books\",\n        \"attributes\": {\n            \"title\": \"Nuevo artículo\",\n            \"slug\": \"nuevo-articulo\",\n            \"content\": \"Contenido del nuevo artículo\"\n        },\n        \"relationships\": {\n            \"authors\": {\n                \"data\": {\n                    \"type\": \"authors\",\n                    \"id\": \"{{AUTH_USER_ID}}\"\n                }\n            },\n            \"categories\": {\n                \"data\": {\n                    \"type\": \"categories\",\n                    \"id\": \"quam-sint-sit-possimus-est-minus-voluptas-earum\"\n                }\n            }\n        }\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"type\": \"books\",\n        \"attributes\": {\n            \"title\": \"La Divina Comedia\",\n            \"slug\": \"la-divina-comedia\",\n            \"content\": \"Contenido del nuevo artículo\"\n        },\n        \"relationships\": {\n            \"authors\": {\n                \"data\": {\n                    \"type\": \"authors\",\n                    \"id\": \"{{AUTH_USER_ID}}\"\n                }\n            },\n            \"categories\": {\n                \"data\": {\n                    \"type\": \"categories\",\n                    \"id\": \"quam-sint-sit-possimus-est-minus-voluptas-earum\"\n                }\n            }\n        }\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -774,7 +881,7 @@
 					},
 					"response": [
 						{
-							"name": "Create Book",
+							"name": "Success Create Book Response",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -860,6 +967,95 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"type\": \"books\",\n        \"id\": \"nuevo-libro\",\n        \"attributes\": {\n            \"title\": \"Nuevo libro\",\n            \"slug\": \"nuevo-libro\",\n            \"content\": \"Contenido del nuevo artículo\",\n            \"created-at\": \"2021-02-22T22:34:08+00:00\",\n            \"updated-at\": \"2021-02-22T22:34:08+00:00\"\n        },\n        \"relationships\": {\n            \"authors\": {\n                \"links\": {\n                    \"self\": \"http://jsonapi.test/api/v1/books/nuevo-articulo/relationships/authors\",\n                    \"related\": \"http://jsonapi.test/api/v1/books/nuevo-articulo/authors\"\n                }\n            },\n            \"categories\": {\n                \"links\": {\n                    \"self\": \"http://jsonapi.test/api/v1/books/nuevo-articulo/relationships/categories\",\n                    \"related\": \"http://jsonapi.test/api/v1/books/nuevo-articulo/categories\"\n                }\n            }\n        },\n        \"links\": {\n            \"self\": \"http://jsonapi.test/api/v1/books/nuevo-articulo\"\n        }\n    }\n}"
+						},
+						{
+							"name": "Success Create Book Response",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 5|cvgCefXZTxDu2u5K2ABBgHSK23bwQ6z5rnh6GfYX",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"type\": \"books\",\n        \"attributes\": {\n            \"title\": \"Vengaza Nuestra\",\n            \"slug\": \"venganza-nuestra\",\n            \"content\": \"Narrativa sobre la postconquista de México\"\n        },\n        \"relationships\": {\n            \"authors\": {\n                \"data\": {\n                    \"type\": \"authors\",\n                    \"id\": \"793366a5-2e09-4258-a121-2bc62693d49f\"\n                }\n            },\n            \"categories\": {\n                \"data\": {\n                    \"type\": \"categories\",\n                    \"id\": \"science-fiction\"\n                }\n            }\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_URL}}/books",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.22"
+								},
+								{
+									"key": "Location",
+									"value": "https://bookstore.test/api/v1/books/venganza-nuestra"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Nov 2021 18:41:14 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"type\": \"books\",\n        \"id\": \"venganza-nuestra\",\n        \"attributes\": {\n            \"title\": \"Vengaza Nuestra\",\n            \"slug\": \"venganza-nuestra\",\n            \"content\": \"Narrativa sobre la postconquista de México\",\n            \"created-at\": \"2021-11-06T18:41:14+00:00\",\n            \"updated-at\": \"2021-11-06T18:41:14+00:00\"\n        },\n        \"relationships\": {\n            \"authors\": {\n                \"links\": {\n                    \"self\": \"https://bookstore.test/api/v1/books/venganza-nuestra/relationships/authors\",\n                    \"related\": \"https://bookstore.test/api/v1/books/venganza-nuestra/authors\"\n                }\n            },\n            \"categories\": {\n                \"links\": {\n                    \"self\": \"https://bookstore.test/api/v1/books/venganza-nuestra/relationships/categories\",\n                    \"related\": \"https://bookstore.test/api/v1/books/venganza-nuestra/categories\"\n                }\n            }\n        },\n        \"links\": {\n            \"self\": \"https://bookstore.test/api/v1/books/venganza-nuestra\"\n        }\n    }\n}"
 						}
 					]
 				},
@@ -922,7 +1118,7 @@
 					},
 					"response": [
 						{
-							"name": "Update Book",
+							"name": "Success Update Book Response",
 							"originalRequest": {
 								"method": "PATCH",
 								"header": [
@@ -1047,7 +1243,7 @@
 					},
 					"response": [
 						{
-							"name": "Delete Books",
+							"name": "Success Delete Books Response",
 							"originalRequest": {
 								"method": "DELETE",
 								"header": [],
@@ -2489,6 +2685,104 @@
 			"name": "Authors",
 			"item": [
 				{
+					"name": "Authors",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/authors",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"authors"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Authors Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/authors?page[size]=3&page[number]=2",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"authors"
+									],
+									"query": [
+										{
+											"key": "page[size]",
+											"value": "3"
+										},
+										{
+											"key": "page[number]",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.19.6"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.api+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.0.2"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 15 Mar 2021 17:53:45 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"page\": {\n            \"current-page\": 2,\n            \"per-page\": 3,\n            \"from\": 4,\n            \"to\": 6,\n            \"total\": 15,\n            \"last-page\": 5\n        }\n    },\n    \"links\": {\n        \"first\": \"http://jsonapi.test/api/v1/authors?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\n        \"prev\": \"http://jsonapi.test/api/v1/authors?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\n        \"next\": \"http://jsonapi.test/api/v1/authors?page%5Bnumber%5D=3&page%5Bsize%5D=3\",\n        \"last\": \"http://jsonapi.test/api/v1/authors?page%5Bnumber%5D=5&page%5Bsize%5D=3\"\n    },\n    \"data\": [\n        {\n            \"type\": \"authors\",\n            \"id\": \"61b13cd6-ca47-4b6a-89b5-be0e5ecb6fc6\",\n            \"attributes\": {\n                \"name\": \"Price\",\n                \"created-at\": \"2021-02-22T22:27:41+00:00\",\n                \"updated-at\": \"2021-02-22T22:27:41+00:00\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"http://jsonapi.test/api/v1/authors/61b13cd6-ca47-4b6a-89b5-be0e5ecb6fc6/relationships/books\",\n                        \"related\": \"http://jsonapi.test/api/v1/authors/61b13cd6-ca47-4b6a-89b5-be0e5ecb6fc6/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"http://jsonapi.test/api/v1/authors/61b13cd6-ca47-4b6a-89b5-be0e5ecb6fc6\"\n            }\n        },\n        {\n            \"type\": \"authors\",\n            \"id\": \"7003206f-b06e-4e7d-8930-5c48e0d7821e\",\n            \"attributes\": {\n                \"name\": \"Imogene\",\n                \"created-at\": \"2021-02-22T22:27:41+00:00\",\n                \"updated-at\": \"2021-02-22T22:27:41+00:00\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"http://jsonapi.test/api/v1/authors/7003206f-b06e-4e7d-8930-5c48e0d7821e/relationships/books\",\n                        \"related\": \"http://jsonapi.test/api/v1/authors/7003206f-b06e-4e7d-8930-5c48e0d7821e/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"http://jsonapi.test/api/v1/authors/7003206f-b06e-4e7d-8930-5c48e0d7821e\"\n            }\n        },\n        {\n            \"type\": \"authors\",\n            \"id\": \"78313f44-f7a5-4e4b-a2e5-cf629220ea44\",\n            \"attributes\": {\n                \"name\": \"Savanah\",\n                \"created-at\": \"2021-02-22T22:27:41+00:00\",\n                \"updated-at\": \"2021-02-22T22:27:41+00:00\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"http://jsonapi.test/api/v1/authors/78313f44-f7a5-4e4b-a2e5-cf629220ea44/relationships/books\",\n                        \"related\": \"http://jsonapi.test/api/v1/authors/78313f44-f7a5-4e4b-a2e5-cf629220ea44/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"http://jsonapi.test/api/v1/authors/78313f44-f7a5-4e4b-a2e5-cf629220ea44\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
 					"name": "Paginated Authors",
 					"request": {
 						"method": "GET",
@@ -2965,7 +3259,7 @@
 			"name": "Categories",
 			"item": [
 				{
-					"name": "Paginated Categories",
+					"name": "Categories",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2981,48 +3275,39 @@
 							}
 						],
 						"url": {
-							"raw": "{{API_URL}}/categories?page[size]=3&page[number]=2",
+							"raw": "{{API_URL}}/categories",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"categories"
-							],
-							"query": [
-								{
-									"key": "page[size]",
-									"value": "3"
-								},
-								{
-									"key": "page[number]",
-									"value": "2"
-								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Success Paginated Categories Response",
+							"name": "Success Categories Response",
 							"originalRequest": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "{{API_URL}}/categories?page[size]=3&page[number]=1",
+									"raw": "{{API_URL}}/categories",
 									"host": [
 										"{{API_URL}}"
 									],
 									"path": [
 										"categories"
-									],
-									"query": [
-										{
-											"key": "page[size]",
-											"value": "3"
-										},
-										{
-											"key": "page[number]",
-											"value": "1"
-										}
 									]
 								}
 							},
@@ -3031,44 +3316,48 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "Server",
-									"value": "nginx/1.21.1"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/vnd.api+json"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
-								},
-								{
 									"key": "Connection",
 									"value": "keep-alive"
 								},
 								{
-									"key": "X-Powered-By",
-									"value": "PHP/7.4.22"
+									"key": "Date",
+									"value": "Sat, 06 Nov 2021 18:27:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Apache"
 								},
 								{
 									"key": "Cache-Control",
 									"value": "no-cache, private"
 								},
 								{
-									"key": "Date",
-									"value": "Thu, 04 Nov 2021 06:09:52 GMT"
-								},
-								{
-									"key": "X-RateLimit-Limit",
+									"key": "X-Ratelimit-Limit",
 									"value": "60"
 								},
 								{
-									"key": "X-RateLimit-Remaining",
-									"value": "59"
+									"key": "X-Ratelimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Vary",
+									"value": "Authorization"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 vegur"
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"meta\": {\n        \"page\": {\n            \"current-page\": 1,\n            \"per-page\": 3,\n            \"from\": 1,\n            \"to\": 2,\n            \"total\": 2,\n            \"last-page\": 1\n        }\n    },\n    \"links\": {\n        \"first\": \"https://bookstore.test/api/v1/categories?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\n        \"last\": \"https://bookstore.test/api/v1/categories?page%5Bnumber%5D=1&page%5Bsize%5D=3\"\n    },\n    \"data\": [\n        {\n            \"type\": \"categories\",\n            \"id\": \"fantasy\",\n            \"attributes\": {\n                \"name\": \"Fantasy\",\n                \"slug\": \"fantasy\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://bookstore.test/api/v1/categories/fantasy/relationships/books\",\n                        \"related\": \"https://bookstore.test/api/v1/categories/fantasy/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://bookstore.test/api/v1/categories/fantasy\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"science-fiction\",\n            \"attributes\": {\n                \"name\": \"Science fiction\",\n                \"slug\": \"science-fiction\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://bookstore.test/api/v1/categories/science-fiction/relationships/books\",\n                        \"related\": \"https://bookstore.test/api/v1/categories/science-fiction/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://bookstore.test/api/v1/categories/science-fiction\"\n            }\n        }\n    ]\n}"
+							"body": "{\n    \"data\": [\n        {\n            \"type\": \"categories\",\n            \"id\": \"science-fiction\",\n            \"attributes\": {\n                \"name\": \"Science fiction\",\n                \"slug\": \"science-fiction\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/science-fiction/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/science-fiction/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/science-fiction\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"nonfiction\",\n            \"attributes\": {\n                \"name\": \"Nonfiction\",\n                \"slug\": \"nonfiction\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/nonfiction/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/nonfiction/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/nonfiction\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"fiction\",\n            \"attributes\": {\n                \"name\": \"Fiction\",\n                \"slug\": \"fiction\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/fiction/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/fiction/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/fiction\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"food\",\n            \"attributes\": {\n                \"name\": \"Food\",\n                \"slug\": \"food\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/food/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/food/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/food\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"history\",\n            \"attributes\": {\n                \"name\": \"History\",\n                \"slug\": \"history\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/history/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/history/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/history\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"memoir\",\n            \"attributes\": {\n                \"name\": \"Memoir\",\n                \"slug\": \"memoir\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/memoir/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/memoir/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/memoir\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"politics\",\n            \"attributes\": {\n                \"name\": \"Politics\",\n                \"slug\": \"politics\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/politics/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/politics/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/politics\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"self-help\",\n            \"attributes\": {\n                \"name\": \"Self-Help\",\n                \"slug\": \"self-help\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/self-help/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/self-help/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/self-help\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"young-adult\",\n            \"attributes\": {\n                \"name\": \"Young Adult\",\n                \"slug\": \"young-adult\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/young-adult/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/young-adult/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/young-adult\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"childrens-boks\",\n            \"attributes\": {\n                \"name\": \"Children’s Books\",\n                \"slug\": \"childrens-boks\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/childrens-boks/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/childrens-boks/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/childrens-boks\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"crime-thriller\",\n            \"attributes\": {\n                \"name\": \"Crime Thriller\",\n                \"slug\": \"crime-thriller\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/crime-thriller/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/crime-thriller/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/crime-thriller\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"literary-fiction\",\n            \"attributes\": {\n                \"name\": \"Literary Fiction\",\n                \"slug\": \"literary-fiction\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/literary-fiction/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/literary-fiction/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/literary-fiction\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"crime\",\n            \"attributes\": {\n                \"name\": \"Crime\",\n                \"slug\": \"crime\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/crime/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/crime/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/crime\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"drama\",\n            \"attributes\": {\n                \"name\": \"Drama\",\n                \"slug\": \"drama\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/drama/relationships/books\",\n                        \"related\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/drama/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://playground-bookstore.herokuapp.com/api/v1/categories/drama\"\n            }\n        }\n    ]\n}"
 						}
 					]
 				},
@@ -3089,13 +3378,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{API_URL}}/categories/eligendi-magni-beatae-alias",
+							"raw": "{{API_URL}}/categories/science-fiction",
 							"host": [
 								"{{API_URL}}"
 							],
 							"path": [
 								"categories",
-								"eligendi-magni-beatae-alias"
+								"science-fiction"
 							]
 						}
 					},
@@ -3239,6 +3528,114 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"type\": \"categories\",\n        \"id\": \"science-fiction\",\n        \"attributes\": {\n            \"name\": \"Science fiction\",\n            \"slug\": \"science-fiction\"\n        },\n        \"relationships\": {\n            \"books\": {\n                \"links\": {\n                    \"self\": \"https://bookstore.test/api/v1/categories/science-fiction/relationships/books\",\n                    \"related\": \"https://bookstore.test/api/v1/categories/science-fiction/books\"\n                }\n            }\n        },\n        \"links\": {\n            \"self\": \"https://bookstore.test/api/v1/categories/science-fiction\"\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Paginated Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_URL}}/categories?page[size]=3&page[number]=2",
+							"host": [
+								"{{API_URL}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page[size]",
+									"value": "3"
+								},
+								{
+									"key": "page[number]",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success Paginated Categories Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_URL}}/categories?page[size]=3&page[number]=1",
+									"host": [
+										"{{API_URL}}"
+									],
+									"path": [
+										"categories"
+									],
+									"query": [
+										{
+											"key": "page[size]",
+											"value": "3"
+										},
+										{
+											"key": "page[number]",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.21.1"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/vnd.api+json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.4.22"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 04 Nov 2021 06:09:52 GMT"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"meta\": {\n        \"page\": {\n            \"current-page\": 1,\n            \"per-page\": 3,\n            \"from\": 1,\n            \"to\": 2,\n            \"total\": 2,\n            \"last-page\": 1\n        }\n    },\n    \"links\": {\n        \"first\": \"https://bookstore.test/api/v1/categories?page%5Bnumber%5D=1&page%5Bsize%5D=3\",\n        \"last\": \"https://bookstore.test/api/v1/categories?page%5Bnumber%5D=1&page%5Bsize%5D=3\"\n    },\n    \"data\": [\n        {\n            \"type\": \"categories\",\n            \"id\": \"fantasy\",\n            \"attributes\": {\n                \"name\": \"Fantasy\",\n                \"slug\": \"fantasy\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://bookstore.test/api/v1/categories/fantasy/relationships/books\",\n                        \"related\": \"https://bookstore.test/api/v1/categories/fantasy/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://bookstore.test/api/v1/categories/fantasy\"\n            }\n        },\n        {\n            \"type\": \"categories\",\n            \"id\": \"science-fiction\",\n            \"attributes\": {\n                \"name\": \"Science fiction\",\n                \"slug\": \"science-fiction\"\n            },\n            \"relationships\": {\n                \"books\": {\n                    \"links\": {\n                        \"self\": \"https://bookstore.test/api/v1/categories/science-fiction/relationships/books\",\n                        \"related\": \"https://bookstore.test/api/v1/categories/science-fiction/books\"\n                    }\n                }\n            },\n            \"links\": {\n                \"self\": \"https://bookstore.test/api/v1/categories/science-fiction\"\n            }\n        }\n    ]\n}"
 						}
 					]
 				},
