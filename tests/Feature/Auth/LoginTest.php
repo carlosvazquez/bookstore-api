@@ -69,7 +69,7 @@ class LoginTest extends TestCase
             'email' => 'john@mail.com',
             'password' => 'wrong-password',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('email');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -93,7 +93,7 @@ class LoginTest extends TestCase
             'password' => 'wrong-password',
             'device_name' => 'iPhone de John'
         ])->assertSee(__('validation.required', ['attribute' => 'email']))
-            ->assertJsonValidationErrors('email');
+            ->assertStatus(422);
     }
 
     /** @test */
@@ -104,7 +104,7 @@ class LoginTest extends TestCase
             'password' => 'wrong-password',
             'device_name' => 'iPhone de John'
         ])->assertSee(__('validation.email', ['attribute' => 'email']))
-            ->assertJsonValidationErrors('email');
+            ->assertStatus(422);
     }
 
     /** @test */
@@ -114,7 +114,7 @@ class LoginTest extends TestCase
             'email' => 'john@mail.com',
             'password' => '',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('password');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -124,6 +124,6 @@ class LoginTest extends TestCase
             'email' => 'john@mail.com',
             'password' => 'password',
             'device_name' => ''
-        ])->assertJsonValidationErrors('device_name');
+        ])->assertStatus(422);
     }
 }

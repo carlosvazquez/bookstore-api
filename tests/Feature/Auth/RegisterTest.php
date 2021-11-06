@@ -54,7 +54,7 @@ class RegisterTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('name');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -65,7 +65,7 @@ class RegisterTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('email');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -76,7 +76,7 @@ class RegisterTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('email');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -89,7 +89,7 @@ class RegisterTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'password',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('email');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -100,7 +100,7 @@ class RegisterTest extends TestCase
             'password' => '',
             'password_confirmation' => 'password',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('password');
+        ])->assertStatus(422);
     }
 
     /** @test */
@@ -111,15 +111,17 @@ class RegisterTest extends TestCase
             'password' => 'password',
             'password_confirmation' => 'not-confirmed',
             'device_name' => 'iPhone de John'
-        ])->assertJsonValidationErrors('password');
+        ])->assertStatus(422);
     }
     /** @test */
     public function device_name_is_required()
     {
         $this->postJson(route('api.v1.register'), [
+            'name' => 'john',
             'email' => 'john@mail.com',
             'password' => 'password',
+            'password_confirmation' => 'password',
             'device_name' => ''
-        ])->assertJsonValidationErrors('device_name');
+        ])->assertStatus(422);
     }
 }
