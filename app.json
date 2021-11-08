@@ -1,0 +1,7 @@
+{
+  "name": "Node.js Sample",
+  "description": "Bookstore Api",
+  "repository": "https://github.com/carlosvazquez/bookstore-api",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["php", "laravel", "api"]
+}
