@@ -1,5 +1,5 @@
 {
-  "name": "Node.js Sample",
+  "name": "Bookstore Api Sample",
   "description": "Bookstore Api",
   "repository": "https://github.com/carlosvazquez/bookstore-api",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
